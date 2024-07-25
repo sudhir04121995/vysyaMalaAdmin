@@ -27,5 +27,7 @@
   }
   
   
-  
+  .custom-editor-container .ck-editor__editable {
+    height: 400px; /* Set the desired height */
+  }
   

@@ -169,6 +169,7 @@ navigate("/CsmDataTable")
       </div>
     
       <div className="mb-4">
+      <div className="custom-editor-container">
         <CKEditor
           editor={ClassicEditor}
           data={editorData}
@@ -196,9 +197,11 @@ navigate("/CsmDataTable")
             language: 'en',
             ckfinder: {
               uploadUrl: 'http://localhost:3000/upload'
-            }
+            },
+            
           }}
         />
+        </div>
         {errors.editorData && <p className="text-red-500 text-sm">{errors.editorData}</p>}
       </div>
       <div className="flex space-x-4 mb-4">
