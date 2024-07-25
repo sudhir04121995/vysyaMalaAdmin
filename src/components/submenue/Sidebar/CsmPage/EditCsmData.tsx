@@ -21,7 +21,7 @@ const contentSchema = z.object({
 
 const CsmEditorComponent: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const [editorData, setEditorData] = useState<string>('<p>Type your content here...</p>');
+  const [editorData, setEditorData] = useState<string>('<p></p>');
   const [pageName, setPageName] = useState<string>('');
   const [status, setStatus] = useState<string>('active');
   const [metaTitle, setMetaTitle] = useState<string>('');
@@ -154,21 +154,6 @@ const CsmEditorComponent: React.FC = () => {
           {errors.pageName && <span className="text-red-500 text-sm">{errors.pageName}</span>}
         </div>
         <div className="flex-1">
-          <label htmlFor="status" className="block mb-2">Status</label>
-          <select
-            id="status"
-            value={status}
-            onChange={handleInputChange}
-            className="px-3 py-2 border border-gray-300 rounded-md w-full text-sm"
-          >
-            <option value="active">Active</option>
-            <option value="inactive">Inactive</option>
-          </select>
-          {errors.status && <span className="text-red-500 text-sm">{errors.status}</span>}
-        </div>
-      </div>
-      <div className="flex space-x-4 mb-4">
-        <div className="flex-1">
           <label htmlFor="metaTitle" className="block mb-2">Meta Title</label>
           <input
             type="text"
@@ -179,6 +164,9 @@ const CsmEditorComponent: React.FC = () => {
           />
           {errors.metaTitle && <span className="text-red-500 text-sm">{errors.metaTitle}</span>}
         </div>
+      </div>
+      <div className="flex space-x-4 mb-4">
+       
         <div className="flex-1">
           <label htmlFor="metaDescription" className="block mb-2">Meta Description</label>
           <input
@@ -190,8 +178,7 @@ const CsmEditorComponent: React.FC = () => {
           />
           {errors.metaDescription && <span className="text-red-500 text-sm">{errors.metaDescription}</span>}
         </div>
-      </div>
-      <div className="mb-4">
+        <div className="flex-1">
         <label htmlFor="metaKeywords" className="block mb-2">Meta Keywords</label>
         <input
           type="text"
@@ -202,6 +189,8 @@ const CsmEditorComponent: React.FC = () => {
         />
         {errors.metaKeywords && <span className="text-red-500 text-sm">{errors.metaKeywords}</span>}
       </div>
+      </div>
+     
       <div className="mb-4">
         <label htmlFor="editor" className="block mb-2">Content</label>
         <CKEditor
@@ -220,11 +209,26 @@ const CsmEditorComponent: React.FC = () => {
         />
         {errors.editorData && <span className="text-red-500 text-sm">{errors.editorData}</span>}
       </div>
+      <div className="flex-1">
+          <label htmlFor="status" className="block mb-2">Status</label>
+          <select
+            id="status"
+            value={status}
+            onChange={handleInputChange}
+            className="px-3 py-2 border border-gray-300 rounded-md w-full text-sm"
+          >
+             <option value=" ">Select Status</option>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+          </select>
+          {errors.status && <span className="text-red-500 text-sm">{errors.status}</span>}
+        </div>
+        <br/>
       <button
         onClick={handleSave}
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
       >
-        Save
+        Edit Content
       </button>
     </div>
   );

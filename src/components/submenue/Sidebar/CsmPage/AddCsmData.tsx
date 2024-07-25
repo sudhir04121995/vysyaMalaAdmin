@@ -18,7 +18,7 @@ const contentSchema = z.object({
 });
 
 const CKEditorComponent: React.FC = () => {
-  const [editorData, setEditorData] = useState<string>('<p>Type your content here...</p>');
+  const [editorData, setEditorData] = useState<string>('<p></p>');
   const [pageName, setPageName] = useState<string>('');
   const [status, setStatus] = useState<string>('active'); // Defaulting to 'active'
   const [metaTitle, setMetaTitle] = useState<string>('');
