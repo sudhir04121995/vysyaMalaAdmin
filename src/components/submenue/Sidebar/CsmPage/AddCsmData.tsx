@@ -167,22 +167,7 @@ navigate("/CsmDataTable")
           {errors.metaKeywords && <p className="text-red-500 text-sm">{errors.metaKeywords}</p>}
         </div>
       </div>
-      <div className="flex space-x-4 mb-4">
-        <div className="flex-1">
-          <label htmlFor="status" className="block mb-2">Status</label>
-          <select
-            id="status"
-            value={status}
-            onChange={handleStatusChange}
-            className="px-3 py-2 border border-gray-300 rounded-md w-full text-sm"
-          >
-            <option value="">Select Status</option>
-            <option value="active">Active</option>
-            <option value="inactive">Inactive</option>
-          </select>
-          {errors.status && <p className="text-red-500 text-sm">{errors.status}</p>}
-        </div>
-      </div>
+    
       <div className="mb-4">
         <CKEditor
           editor={ClassicEditor}
@@ -215,6 +200,22 @@ navigate("/CsmDataTable")
           }}
         />
         {errors.editorData && <p className="text-red-500 text-sm">{errors.editorData}</p>}
+      </div>
+      <div className="flex space-x-4 mb-4">
+        <div className="flex-1">
+          <label htmlFor="status" className="block mb-2">Status</label>
+          <select
+            id="status"
+            value={status}
+            onChange={handleStatusChange}
+            className="px-3 py-2 border border-gray-300 rounded-md w-full text-sm"
+          >
+            <option value="">Select Status</option>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+          </select>
+          {errors.status && <p className="text-red-500 text-sm">{errors.status}</p>}
+        </div>
       </div>
       <div>
         <button
