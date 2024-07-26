@@ -10,10 +10,11 @@ import { TextField, Button, Box, Typography, Grid } from '@mui/material';
 const validationSchema = z.object({
   site_name: z.string().min(1, "Site name is required"),
   meta_title: z.string().min(1, "Meta title is required"),
-  description: z.string().min(1, "Description is required"),
+  meta_description: z.string().min(1, "Description is required"),
   contact_number: z.string().min(10, "Contact number must be at least 10 digits").max(15, "Contact number must be at most 15 digits"),
   whatsapp_number: z.string().min(10, "WhatsApp number must be at least 10 digits").max(15, "WhatsApp number must be at most 15 digits"),
   email_address: z.string().email("Invalid email address"),
+  Location_Address: z.string().min(1, "Location address name is required"),
 });
 
 type FormData = z.infer<typeof validationSchema>;
@@ -22,10 +23,11 @@ const SiteDetailsForm: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     site_name: '',
     meta_title: '',
-    description: '',
+    meta_description: '',
     contact_number: '',
     whatsapp_number: '',
     email_address: '',
+    Location_Address:''
   });
 
   const { control, handleSubmit, formState: { errors }, reset } = useForm<FormData>({
@@ -52,10 +54,11 @@ const SiteDetailsForm: React.FC = () => {
         setFormData({
           site_name: pageData.site_name || '',
           meta_title: pageData.meta_title || '',
-          description: pageData.description || '',
+          meta_description: pageData.meta_description || '',
           contact_number: pageData.contact_number || '',
           whatsapp_number: pageData.whatsapp_number || '',
           email_address: pageData.email_address || '',
+          Location_Address:''
         });
 
         // Reset form with new default values
@@ -113,17 +116,17 @@ const SiteDetailsForm: React.FC = () => {
         <Grid container spacing={5}>
           <Grid item xs={12} sm={6}>
             <Controller
-              name="description"
+              name="meta_description"
               control={control}
               render={({ field }) => (
                 <TextField
                   {...field}
-                  label="Description"
+                  label="Meta Description"
                   variant="outlined"
                   margin="normal"
                   fullWidth
-                  error={!!errors.description}
-                  helperText={errors.description ? errors.description.message : ''}
+                  error={!!errors.meta_description}
+                  helperText={errors.meta_description ? errors.meta_description.message : ''}
                 />
               )}
             />
@@ -182,6 +185,21 @@ const SiteDetailsForm: React.FC = () => {
             />
           </Grid>
         </Grid>
+        <Controller
+              name="Location_Address"
+              control={control}
+              render={({ field }) => (
+                <TextField
+                  {...field}
+                  label="Location Address"
+                  variant="outlined"
+                  margin="normal"
+                  fullWidth
+                  error={!!errors.Location_Address}
+                  helperText={errors.Location_Address ? errors.Location_Address.message : ''}
+                />
+              )}
+            />
         <Button
           type="submit"
           variant="outlined"
