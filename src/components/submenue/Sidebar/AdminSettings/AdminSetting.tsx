@@ -1,6 +1,5 @@
 
 
-
 import React, { useEffect, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -34,14 +33,19 @@ const SiteDetailsForm: React.FC = () => {
     defaultValues: formData,
   });
 
-  const onSubmit = (data: FormData) => {
-    console.log(data);
+  const onSubmit = async (data: FormData) => {
+    try {
+      const response = await axios.patch('http://192.168.1.2:8000/auth/admin-settings/update/', data);
+      console.log('Response:', response.data);
+    } catch (error) {
+      console.error('Error updating data:', error);
+    }
   };
 
   useEffect(() => {
     const fetchPageData = async () => {
       try {
-        const response = await axios.get(`http://192.168.1.2:8000/auth/admin-settings/`);
+        const response = await axios.get('http://192.168.1.2:8000/auth/admin-settings/');
         const pageData = response.data;
 
         // Set the fetched data as default values
@@ -192,4 +196,4 @@ const SiteDetailsForm: React.FC = () => {
   );
 };
 
-export default  SiteDetailsForm;
+export default SiteDetailsForm;
