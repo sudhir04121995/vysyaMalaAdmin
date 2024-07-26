@@ -371,6 +371,7 @@ import ProfileForm from './components/new_profile/AddProfile';
 import CsmDataTable from './components/submenue/Sidebar/CsmPage/CsmTableData';
 import CKEditorComponent from './components/submenue/Sidebar/CsmPage/AddCsmData';
 import CsmEditorComponent from './components/submenue/Sidebar/CsmPage/EditCsmData';
+import SiteDetailsForm from './components/submenue/Sidebar/AdminSettings/AdminSettings';
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -604,6 +605,15 @@ function App() {
     <>
       <PageTitle title="EditCsmData" />
       <CsmEditorComponent />
+    </>
+  }
+/>
+<Route
+  path="/SiteDetailsForm"
+  element={
+    <>
+      <PageTitle title="SiteDetailsForm" />
+      < SiteDetailsForm/>
     </>
   }
 />

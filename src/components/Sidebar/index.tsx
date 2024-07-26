@@ -837,7 +837,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                           <li>
                             <NavLink
                               to="/CsmDataTable"
-                              className={({ isActive }) =>
+                              className={
                               'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-black hover:text-PrimaryRed duration-300 ease-in-out hover:text-PrimaryRed ' 
                             }
                             >
@@ -858,6 +858,58 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   );
                 }}
               </SidebarLinkGroup>
+              <SidebarLinkGroup
+  activeCondition={pathname === '/SiteDetailsForm' || pathname.includes('AdminSettings')}
+>
+  {(handleClick, open) => {
+    return (
+      <React.Fragment>
+        <NavLink
+          to="/SiteDetailsForm"
+          className={`group relative flex items-center gap-2.5 success rounded-sm px-4 py-2 text-black font-medium text-PrimaryRed hover:text-PrimaryRed duration-300 ease-in-out ${pathname === '/' || pathname.includes('dashboard') ? '' : ''}`}
+          onClick={() => {
+            setSidebarExpanded(false);
+          }}
+        >
+          <svg
+            className="fill-current"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M19.14,12.936c0.038-0.304,0.06-0.613,0.06-0.936s-0.022-0.632-0.06-0.936l2.03-1.593c0.188-0.147,0.24-0.42,0.115-0.632
+              l-1.922-3.328c-0.125-0.211-0.391-0.292-0.617-0.205l-2.39,0.96c-0.499-0.385-1.03-0.705-1.595-0.96l-0.36-2.53
+              C14.39,2.194,14.178,2,13.94,2h-3.88c-0.238,0-0.45,0.194-0.486,0.428l-0.36,2.53c-0.565,0.255-1.096,0.575-1.595,0.96
+              l-2.39-0.96c-0.226-0.087-0.492-0.006-0.617,0.205L2.655,8.839c-0.125,0.211-0.072,0.485,0.115,0.632l2.03,1.593
+              C4.762,11.368,4.74,11.676,4.74,12s0.022,0.632,0.06,0.936l-2.03,1.593c-0.188,0.147-0.24,0.42-0.115,0.632l1.922,3.328
+              c0.125,0.211,0.391,0.292,0.617,0.205l2.39-0.96c0.499,0.385,1.03,0.705,1.595,0.96l0.36,2.53c0.036,0.234,0.248,0.428,0.486,0.428
+              h3.88c0.238,0,0.45-0.194,0.486-0.428l0.36-2.53c0.565-0.255,1.096-0.575,1.595-0.96l2.39,0.96c0.226,0.087,0.492,0.006,0.617-0.205
+              l1.922-3.328c0.125-0.211,0.072-0.485-0.115-0.632L19.14,12.936z M12,15.5c-1.933,0-3.5-1.567-3.5-3.5s1.567-3.5,3.5-3.5
+              s3.5,1.567,3.5,3.5S13.933,15.5,12,15.5z"
+              fill="currentColor"
+            />
+          </svg>
+          Admin Panel
+          <svg
+            className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${open ? 'rotate-180' : ''}`}
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+          </svg>
+        </NavLink>
+      </React.Fragment>
+    );
+  }}
+</SidebarLinkGroup>
+
             </ul>
           </div>
         </nav>
