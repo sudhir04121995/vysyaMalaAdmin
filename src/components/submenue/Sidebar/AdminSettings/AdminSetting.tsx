@@ -1,9 +1,11 @@
 
 
-import React, {  useState } from 'react';
+
+import React, { useEffect, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
+import axios from 'axios';
 import { TextField, Button, Box, Typography, Grid } from '@mui/material';
 
 const validationSchema = z.object({
@@ -27,7 +29,7 @@ const SiteDetailsForm: React.FC = () => {
     email_address: '',
   });
 
-  const { control, handleSubmit, formState: { errors } } = useForm<FormData>({
+  const { control, handleSubmit, formState: { errors }, reset } = useForm<FormData>({
     resolver: zodResolver(validationSchema),
     defaultValues: formData,
   });
@@ -36,6 +38,31 @@ const SiteDetailsForm: React.FC = () => {
     console.log(data);
   };
 
+  useEffect(() => {
+    const fetchPageData = async () => {
+      try {
+        const response = await axios.get(`http://192.168.1.2:8000/auth/admin-settings/`);
+        const pageData = response.data;
+
+        // Set the fetched data as default values
+        setFormData({
+          site_name: pageData.site_name || '',
+          meta_title: pageData.meta_title || '',
+          description: pageData.description || '',
+          contact_number: pageData.contact_number || '',
+          whatsapp_number: pageData.whatsapp_number || '',
+          email_address: pageData.email_address || '',
+        });
+
+        // Reset form with new default values
+        reset(pageData);
+      } catch (error) {
+        console.error('Error fetching page data:', error);
+      }
+    };
+
+    fetchPageData();
+  }, [reset]);
 
   return (
     <Box sx={{ maxWidth: 1300, mx: 'auto', mt: 4 }}>
