@@ -85,7 +85,7 @@ const navigate =useNavigate()
     }
 
     try {
-      const response = await axios.post('http://192.168.1.2:8000/auth/page/', {
+      const response = await axios.post('http://192.168.1.3:8000/auth/page/', {
         page_name: formData.pageName,
         meta_title: formData.metaTitle,
         meta_description: formData.metaDescription,
@@ -178,12 +178,26 @@ navigate("/CsmDataTable")
           config={{
             toolbar: [
               'heading', '|',
-              'bold', 'italic', 'underline', 'link', 'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', 'bulletedList', 'numberedList', 'blockQuote', '|',
+              'bold', 'italic', 'underline', 'link',  'fontFamily', 'fontColor', 'fontBackgroundColor', 'bulletedList', 'numberedList', 'blockQuote', '|',
+              'fontSize','|',
               'undo', 'redo', '|',
               'alignLeft', 'alignCenter', 'alignRight',
               'strikethrough', '|',
-              'imageUpload', 'insertTable', 'tableColumn', 'tableRow', 'mergeTableCells'
+              'imageUpload', 'insertTable', 'tableColumn', 'tableRow', 'mergeTableCells','|',
+              'mediaEmbed'
             ],
+            heading: {
+              options: [
+                { model: 'paragraph', title: 'Normal', class: 'ck-heading_paragraph' },
+                { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
+                { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' },
+                { model: 'heading3', view: 'h3', title: 'Heading 3', class: 'ck-heading_heading3' },
+                { model: 'heading4', view: 'h4', title: 'Heading 4', class: 'ck-heading_heading4' },
+                { model: 'heading5', view: 'h5', title: 'Heading 5', class: 'ck-heading_heading5' },
+                { model: 'heading6', view: 'h6', title: 'Heading 6', class: 'ck-heading_heading6' }
+              ]
+            },
+  
             fontSize: {
               options: [
                 8, 10, 12, 'default', 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72
