@@ -374,6 +374,7 @@ import CsmEditorComponent from './components/submenue/Sidebar/CsmPage/EditCsmDat
 import SiteDetailsForm from './components/submenue/Sidebar/AdminSettings/AdminSetting';
 import AdminUserForm from './components/submenue/AdminUsers/AdminUsers';
 import AdminTable from './components/submenue/AdminUsers/AdminTable';
+import EditAdminUserForm from './components/submenue/AdminUsers/EditAdminUsers';
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -645,6 +646,15 @@ function App() {
     <>
       <PageTitle title="AdminList" />
       <AdminTable/>
+    </>
+  }
+/>
+<Route
+  path="/EditAdminUserForm"
+  element={
+    <>
+      <PageTitle title="EditAdminUserForm" />
+      <EditAdminUserForm/>
     </>
   }
 />
