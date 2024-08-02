@@ -1,8 +1,11 @@
 
+
+
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
+import axios from 'axios';
 import {
   TextField,
   Button,
@@ -20,9 +23,9 @@ const adminUserSchema = z.object({
   username: z.string().min(1, "Username is required"),
   email: z.string().email("Invalid email address"),
   password: z.string().min(8, "Password must be at least 8 characters"),
-  fullName: z.string().min(1, "Full name is required"),
-  role:z.string().nonempty('Role is required'),
-  phoneNumber: z.string().min(10, "Phone number must be at least 10 digits"),
+  full_name: z.string().min(1, "Full name is required"), // updated field name
+  role: z.string().nonempty('Role is required'),
+  phone_number: z.string().min(10, "Phone number must be at least 10 digits"), // updated field name
   status: z.string().nonempty('Status is required'),
 });
 
@@ -33,8 +36,13 @@ const AdminUserForm: React.FC = () => {
     resolver: zodResolver(adminUserSchema),
   });
 
-  const onSubmit = (data: AdminUserFormValues) => {
-    console.log(data);
+  const onSubmit = async (data: AdminUserFormValues) => {
+    try {
+      const response = await axios.post('http://192.168.1.16:8000/auth/admin-users/', data);
+      console.log('Success:', response.data);
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   return (
@@ -81,9 +89,9 @@ const AdminUserForm: React.FC = () => {
                 fullWidth
                 label="Full Name"
                 margin="normal"
-                {...register('fullName')}
-                error={!!errors.fullName}
-                helperText={errors.fullName?.message}
+                {...register('full_name')} // updated field name
+                error={!!errors.full_name}
+                helperText={errors.full_name?.message}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -108,9 +116,9 @@ const AdminUserForm: React.FC = () => {
                 fullWidth
                 label="Phone Number"
                 margin="normal"
-                {...register('phoneNumber')}
-                error={!!errors.phoneNumber}
-                helperText={errors.phoneNumber?.message}
+                {...register('phone_number')} // updated field name
+                error={!!errors.phone_number}
+                helperText={errors.phone_number?.message}
               />
             </Grid>
             <Grid item xs={12} sm={12}>

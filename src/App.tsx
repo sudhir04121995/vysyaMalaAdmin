@@ -398,6 +398,15 @@ function App() {
         element={
           <DefaultLayout>
             <Routes>
+            <Route
+                index
+                element={
+                  <>
+                    <PageTitle title="/Product" />
+                    <ECommerce />
+                  </>
+                }
+              />
               <Route
                 index
                 element={

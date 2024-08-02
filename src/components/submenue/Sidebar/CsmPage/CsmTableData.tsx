@@ -95,7 +95,7 @@ const PageList: React.FC = () => {
     const fetchPages = async () => {
       try {
         const response = await axios.get<Page[]>(
-          'http://192.168.1.9:8000/auth/page-list/',
+          'http://192.168.1.16:8000/auth/page-list/',
         );
         setPages(response.data);
         console.log('getRequestOfTableData:', response.data);
@@ -119,7 +119,7 @@ const PageList: React.FC = () => {
     if (isConfirmed) {
       try {
         const response = await axios.delete(
-          `http://192.168.1.9:8000/auth/page/delete/${id}/`,
+          `http://192.168.1.16:8000/auth/page/delete/${id}/`,
         );
         console.log(`Deleted page with id: ${id}`, response.data);
         // Refresh the page list after deletion

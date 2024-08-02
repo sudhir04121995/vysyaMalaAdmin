@@ -115,7 +115,7 @@ const PageList: React.FC = () => {
                   fontWeight: 'bold',
                   fontSize: '18px',
                   textAlign: 'right',
-                  paddingRight: '100px',
+                  paddingRight: '30px',
                 }}
               >
                 Status
@@ -125,7 +125,7 @@ const PageList: React.FC = () => {
                   fontWeight: 'bold',
                   fontSize: '18px',
                   textAlign: 'right',
-                  paddingRight: '100px',
+                  paddingRight: '50px',
                 }}
               >
                 Actions
@@ -147,16 +147,18 @@ const PageList: React.FC = () => {
                     onClick={() => handleEdit(user.id)}
                     variant="outlined"
                     color="primary"
-                    style={{ marginRight: 8 }}
+                    style={{ marginRight: 22 }}
                     startIcon={<EditIcon />}
                   >
                     Edit
                   </Button>
+                  
                   <Button
                     onClick={() => handleDelete(user.id)}
                     variant="outlined"
                     color="secondary"
                     startIcon={<DeleteIcon />}
+                    style={{ marginTop: 16 }}
                   >
                     Delete
                   </Button>
