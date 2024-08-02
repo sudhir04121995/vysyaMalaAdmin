@@ -58,6 +58,7 @@ const PageList: React.FC = () => {
   }, []);
 
   const handleEdit = (id: number) => {
+    navigate(`/EditAdminUserForm/${id}`)
     console.log(`Edit user with id: ${id}`);
     // Implement edit functionality here
   };
