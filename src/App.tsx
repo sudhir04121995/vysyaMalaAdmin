@@ -650,7 +650,7 @@ function App() {
   }
 />
 <Route
-  path="/EditAdminUserForm"
+  path="/EditAdminUserForm/:id"
   element={
     <>
       <PageTitle title="EditAdminUserForm" />
