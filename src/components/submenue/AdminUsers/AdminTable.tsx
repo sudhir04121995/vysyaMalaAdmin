@@ -1,4 +1,7 @@
-import React from 'react';
+
+
+
+import React, { useEffect, useState } from 'react';
 import {
   Table,
   TableBody,
@@ -13,6 +16,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 interface User {
   id: number;
@@ -25,41 +29,34 @@ interface User {
   status: string;
 }
 
-const dummyUsers: User[] = [
-  {
-    id: 1,
-    username: 'john_doe',
-    email: 'john@example.com',
-    password: '********',
-    fullName: 'John Doe',
-    role: 'Admin',
-    phoneNumber: '123-456-7890',
-    status: 'active',
-  },
-  {
-    id: 2,
-    username: 'jane_smith',
-    email: 'jane@example.com',
-    password: '********',
-    fullName: 'Jane Smith',
-    role: 'User',
-    phoneNumber: '098-765-4321',
-    status: 'inactive',
-  },
-  {
-    id: 3,
-    username: 'alice_jones',
-    email: 'alice@example.com',
-    password: '********',
-    fullName: 'Alice Jones',
-    role: 'User',
-    phoneNumber: '555-555-5555',
-    status: 'active',
-  },
-];
-
 const PageList: React.FC = () => {
-    const navigate =useNavigate()
+  const navigate = useNavigate();
+  const [users, setUsers] = useState<User[]>([]);
+
+  useEffect(() => {
+    // Fetch data from API
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://192.168.1.16:8000/auth/admin-users/');
+        const data = response.data.map((item: any, index: number) => ({
+          id: index + 1, // Assuming the API does not provide an ID, you might want to adjust this
+          username: item.username,
+          email: item.email,
+          password: item.password,
+          fullName: item.full_name,
+          role: item.role,
+          phoneNumber: item.phone_number,
+          status: item.status,
+        }));
+        setUsers(data);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const handleEdit = (id: number) => {
     console.log(`Edit user with id: ${id}`);
     // Implement edit functionality here
@@ -92,6 +89,9 @@ const PageList: React.FC = () => {
         <Table>
           <TableHead>
             <TableRow>
+            <TableCell sx={{ fontWeight: 'bold', fontSize: '18px', paddingLeft: '60px' }}>
+                ID
+              </TableCell>
               <TableCell sx={{ fontWeight: 'bold', fontSize: '18px', paddingLeft: '60px' }}>
                 Username
               </TableCell>
@@ -133,8 +133,9 @@ const PageList: React.FC = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {dummyUsers.map((user) => (
+            {users.map((user) => (
               <TableRow key={user.id}>
+                <TableCell sx={{ fontSize: '18px', paddingLeft: '60px' }}>{user.id}</TableCell>
                 <TableCell sx={{ fontSize: '18px', paddingLeft: '60px' }}>{user.username}</TableCell>
                 <TableCell sx={{ fontSize: '18px', paddingLeft: '60px' }}>{user.email}</TableCell>
                 <TableCell sx={{ fontSize: '18px', paddingLeft: '60px' }}>{user.password}</TableCell>
