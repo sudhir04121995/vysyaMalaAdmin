@@ -291,7 +291,7 @@ const CsmEditorComponent: React.FC = () => {
   useEffect(() => {
     const fetchPageData = async () => {
       try {
-        const response = await axios.get(`http://192.168.1.2:8000/auth/page-list/${id}/`);
+        const response = await axios.get(`http://192.168.1.9:8000/auth/page-list/${id}/`);
         const pageData = response.data;
         setPageName(pageData.page_name);
         setStatus(pageData.status);
@@ -371,7 +371,7 @@ const CsmEditorComponent: React.FC = () => {
         meta_keywords: validatedData.metaKeywords, // Changed to snake_case
       };
 
-      const response = await axios.put(`http://192.168.1.2:8000/auth/page/edit/${id}/`, formData);
+      const response = await axios.put(`http://192.168.1.9:8000/auth/page/edit/${id}/`, formData);
 
       if (response.status === 200) {
         console.log('Page updated successfully');
@@ -464,13 +464,16 @@ const CsmEditorComponent: React.FC = () => {
                 'undo', 'redo', '|',
                 'alignLeft', 'alignCenter', 'alignRight',
                 'strikethrough', '|',
-                'imageUpload', 'insertTable', 'tableColumn', 'tableRow', 'mergeTableCells'
+                'imageUpload', 'insertTable', 'tableColumn', 'tableRow', 'mergeTableCells','|',
+                'mediaEmbed'
+                
               ],
               fontSize: {
                 options: [
                   8, 10, 12, 'default', 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72
                 ]
               },
+              
               fontFamily: {
                 options: [
                   'default', 'Arial, Helvetica, sans-serif', 'Courier New, Courier, monospace', 'Georgia, serif', 'Lucida Sans Unicode, Lucida Grande, sans-serif', 'Tahoma, Geneva, sans-serif', 'Times New Roman, Times, serif', 'Trebuchet MS, Helvetica, sans-serif', 'Verdana, Geneva, sans-serif'

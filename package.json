@@ -9,14 +9,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-adapter-ckfinder": "^42.0.2",
     "@ckeditor/ckeditor5-build-classic": "^42.0.2",
     "@ckeditor/ckeditor5-font": "^42.0.2",
     "@ckeditor/ckeditor5-heading": "^42.0.2",
+    "@ckeditor/ckeditor5-image": "^42.0.2",
     "@ckeditor/ckeditor5-media-embed": "^42.0.2",
     "@ckeditor/ckeditor5-react": "^8.0.0",
     "@ckeditor/ckeditor5-upload": "^42.0.2",
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "@hookform/resolvers": "^3.9.0",
     "@mui/icons-material": "^5.15.21",
     "@mui/material": "^5.16.5",

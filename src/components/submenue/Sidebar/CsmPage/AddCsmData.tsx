@@ -85,7 +85,7 @@ const navigate =useNavigate()
     }
 
     try {
-      const response = await axios.post('http://192.168.1.3:8000/auth/page/', {
+      const response = await axios.post('http://192.168.1.9:8000/auth/page/', {
         page_name: formData.pageName,
         meta_title: formData.metaTitle,
         meta_description: formData.metaDescription,
@@ -210,7 +210,7 @@ navigate("/CsmDataTable")
             },
             language: 'en',
             ckfinder: {
-              uploadUrl: 'http://localhost:3000/upload'
+              uploadUrl: 'http://192.168.1.9:8000/auth/upload-image/'
             },
             
           }}

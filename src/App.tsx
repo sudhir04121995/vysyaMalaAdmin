@@ -373,6 +373,7 @@ import CKEditorComponent from './components/submenue/Sidebar/CsmPage/AddCsmData'
 import CsmEditorComponent from './components/submenue/Sidebar/CsmPage/EditCsmData';
 import SiteDetailsForm from './components/submenue/Sidebar/AdminSettings/AdminSetting';
 import AdminUserForm from './components/submenue/AdminUsers/AdminUsers';
+import AdminTable from './components/submenue/AdminUsers/AdminTable';
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -629,7 +630,15 @@ function App() {
   }
 />
 
-
+<Route
+  path="/AdminList"
+  element={
+    <>
+      <PageTitle title="AdminList" />
+      <AdminTable/>
+    </>
+  }
+/>
 
             </Routes>
           </DefaultLayout>
