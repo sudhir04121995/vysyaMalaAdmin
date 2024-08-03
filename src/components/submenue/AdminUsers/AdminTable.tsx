@@ -34,12 +34,12 @@ const PageList: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
-    // Fetch data from API
+    
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://192.168.1.16:8000/auth/admin-users/');
-        const data = response.data.map((item: any, index: number) => ({
-          id: index + 1, // Assuming the API does not provide an ID, you might want to adjust this
+        const response = await axios.get('http://192.168.1.10:8000/auth/admin-users-list/');
+        const data = response.data.map((item: any) => ({
+          id: item.id, 
           username: item.username,
           email: item.email,
           password: item.password,
@@ -63,9 +63,19 @@ const PageList: React.FC = () => {
     // Implement edit functionality here
   };
 
-  const handleDelete = (id: number) => {
-    console.log(`Delete user with id: ${id}`);
-    // Implement delete functionality here
+  const handleDelete = async (id: number) => {
+    const isConfirmed = window.confirm(
+      'Are you sure you want to delete this user?',
+    );
+    if (isConfirmed) {
+    try {
+      await axios.delete(`http://192.168.1.10:8000/auth/admin-users/${id}/delete/`);
+      setUsers(users.filter((user) => user.id !== id));
+      console.log(`Deleted user with id: ${id}`);
+    } catch (error) {
+      console.error('Error deleting user:', error);
+    }
+  }
   };
 
   const handleAdd = () => {
@@ -90,9 +100,7 @@ const PageList: React.FC = () => {
         <Table>
           <TableHead>
             <TableRow>
-            <TableCell sx={{ fontWeight: 'bold', fontSize: '18px', paddingLeft: '60px' }}>
-                ID
-              </TableCell>
+            
               <TableCell sx={{ fontWeight: 'bold', fontSize: '18px', paddingLeft: '60px' }}>
                 Username
               </TableCell>
@@ -136,7 +144,7 @@ const PageList: React.FC = () => {
           <TableBody>
             {users.map((user) => (
               <TableRow key={user.id}>
-                <TableCell sx={{ fontSize: '18px', paddingLeft: '60px' }}>{user.id}</TableCell>
+               
                 <TableCell sx={{ fontSize: '18px', paddingLeft: '60px' }}>{user.username}</TableCell>
                 <TableCell sx={{ fontSize: '18px', paddingLeft: '60px' }}>{user.email}</TableCell>
                 <TableCell sx={{ fontSize: '18px', paddingLeft: '60px' }}>{user.password}</TableCell>

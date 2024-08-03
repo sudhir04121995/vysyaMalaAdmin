@@ -546,7 +546,7 @@ const CsmEditorComponent: React.FC = () => {
   useEffect(() => {
     const fetchPageData = async () => {
       try {
-        const response = await axios.get(`http://192.168.1.16:8000/auth/page-list/${id}/`);
+        const response = await axios.get(`http://192.168.1.10:8000/auth/page-list/${id}/`);
         const pageData = response.data;
         setPageName(pageData.page_name);
         setStatus(pageData.status);
@@ -626,7 +626,7 @@ const CsmEditorComponent: React.FC = () => {
         meta_keywords: validatedData.metaKeywords, // Changed to snake_case
       };
 
-      const response = await axios.put(`http://192.168.1.16:8000/auth/page/edit/${id}/`, formData);
+      const response = await axios.put(`http://192.168.1.10:8000/auth/page/edit/${id}/`, formData);
 
       if (response.status === 200) {
         console.log('Page updated successfully');
@@ -655,7 +655,7 @@ const CsmEditorComponent: React.FC = () => {
 
   return (
     <div className="container mx-auto mt-10">
-      <h2 className="text-2xl font-bold mb-4">CSM Page</h2>
+      <h2 className="text-2xl font-bold mb-4">Update CSM Page</h2>
       <div className="flex space-x-4 mb-4">
         <div className="flex-1">
           <label htmlFor="pageName" className="block mb-2">Page Name</label>
@@ -740,7 +740,7 @@ const CsmEditorComponent: React.FC = () => {
                 ]
               },
               ckfinder: {
-                uploadUrl: 'http://192.168.1.16:8000/auth/upload-image/' // Update this URL as needed
+                uploadUrl: 'http://192.168.1.10:8000/auth/upload-image/' // Update this URL as needed
               },
             }}
           />
@@ -765,7 +765,7 @@ const CsmEditorComponent: React.FC = () => {
           onClick={handleSave}
           className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
         >
-          Save
+          Update
         </button>
       </div>
     </div>

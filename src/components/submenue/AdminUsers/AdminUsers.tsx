@@ -186,7 +186,7 @@ const AdminUserForm: React.FC = () => {
 
   const onSubmit = async (data: AdminUserFormValues) => {
     try {
-      const response = await axios.post('http://192.168.1.16:8000/auth/admin-users/', data);
+      const response = await axios.post('http://192.168.1.10:8000/auth/admin-users/', data);
       console.log('Success:', response.data);
      
     } catch (error) {

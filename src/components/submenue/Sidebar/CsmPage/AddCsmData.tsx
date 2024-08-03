@@ -337,7 +337,7 @@ const CKEditorComponent: React.FC = () => {
     }
 
     try {
-      const response = await axios.post('http://192.168.1.16:8000/auth/page/', {
+      const response = await axios.post('http://192.168.1.10:8000/auth/page/', {
         page_name: formData.pageName,
         meta_title: formData.metaTitle,
         meta_description: formData.metaDescription,
@@ -451,7 +451,7 @@ const CKEditorComponent: React.FC = () => {
                 ]
               },
               ckfinder: {
-                uploadUrl: 'http://192.168.1.16:8000/auth/upload-image/' // Update this URL as needed
+                uploadUrl: 'http://192.168.1.10:8000/auth/upload-image/' // Update this URL as needed
               },
             }}
           />
