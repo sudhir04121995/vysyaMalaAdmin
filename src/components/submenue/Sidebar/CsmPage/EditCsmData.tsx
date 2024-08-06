@@ -546,7 +546,7 @@ const CsmEditorComponent: React.FC = () => {
   useEffect(() => {
     const fetchPageData = async () => {
       try {
-        const response = await axios.get(`http://192.168.1.10:8000/auth/page-list/${id}/`);
+        const response = await axios.get(`http://103.214.132.20:8000/api/page-list/${id}/`);
         const pageData = response.data;
         setPageName(pageData.page_name);
         setStatus(pageData.status);
@@ -626,7 +626,7 @@ const CsmEditorComponent: React.FC = () => {
         meta_keywords: validatedData.metaKeywords, // Changed to snake_case
       };
 
-      const response = await axios.put(`http://192.168.1.10:8000/auth/page/edit/${id}/`, formData);
+      const response = await axios.put(`http://103.214.132.20:8000/api/page/edit/${id}/`, formData);
 
       if (response.status === 200) {
         console.log('Page updated successfully');
@@ -740,7 +740,7 @@ const CsmEditorComponent: React.FC = () => {
                 ]
               },
               ckfinder: {
-                uploadUrl: 'http://192.168.1.10:8000/auth/upload-image/' // Update this URL as needed
+                uploadUrl: 'http://103.214.132.20:8000/api/upload-image/' // Update this URL as needed
               },
             }}
           />

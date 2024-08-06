@@ -365,7 +365,7 @@ const EditAdminUserForm: React.FC = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get(`http://192.168.1.10:8000/auth/admin-users-list/${id}/`);
+        const response = await axios.get(`http://103.214.132.20:8000/api/admin-users-list/${id}/`);
         const userData = response.data;
         setValue('username', userData.username);
         setValue('email', userData.email);
@@ -385,7 +385,7 @@ const EditAdminUserForm: React.FC = () => {
 
   const onSubmit = async (data: EditAdminUserFormValues) => {
     try {
-      await axios.put(`http://192.168.1.10:8000/auth/admin-users/${id}/edit/`, data);
+      await axios.put(`http://103.214.132.20:8000/api/admin-users/${id}/edit/`, data);
       navigate('/AdminList');
     } catch (error) {
       console.error('Error updating user data:', error);

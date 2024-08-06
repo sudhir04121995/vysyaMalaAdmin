@@ -337,7 +337,7 @@ const CKEditorComponent: React.FC = () => {
     }
 
     try {
-      const response = await axios.post('http://192.168.1.10:8000/auth/page/', {
+      const response = await axios.post('http://103.214.132.20:8000/api/page/', {
         page_name: formData.pageName,
         meta_title: formData.metaTitle,
         meta_description: formData.metaDescription,
@@ -430,14 +430,16 @@ const CKEditorComponent: React.FC = () => {
             config={{
               toolbar: [
                 'heading', '|',
-                'bold', 'italic', 'underline', 'link',  'fontFamily', 'fontColor', 'fontBackgroundColor', 'bulletedList', 'numberedList', 'blockQuote', '|',
+                'alignment', '|',
+                'bold', 'italic', 'underline', 'link',  'fontFamily', 'fontColor', 'fontBackgroundColor', 'bulletedList', 'numberedList', 'blockQuote', 'selectAll', '|',
                 'fontSize','|',
                 'undo', 'redo', '|',
                 'alignLeft', 'alignCenter', 'alignRight',
                 'strikethrough', '|',
                 'imageUpload', 'insertTable', 'tableColumn', 'tableRow', 'mergeTableCells','|',
                 'mediaEmbed','|',
-                'timestamp'
+                'timestamp','|',
+                'findAndReplace', 'sourceEditing'
               ],
               heading: {
                 options: [
@@ -451,7 +453,7 @@ const CKEditorComponent: React.FC = () => {
                 ]
               },
               ckfinder: {
-                uploadUrl: 'http://192.168.1.10:8000/auth/upload-image/' // Update this URL as needed
+                uploadUrl: 'http://103.214.132.20:8000/api/upload-image/' // Update this URL as needed
               },
             }}
           />

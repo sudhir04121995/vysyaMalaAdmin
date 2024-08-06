@@ -787,7 +787,7 @@ const SiteDetailsForm: React.FC = () => {
 
   const onSubmit = async (data: FormData) => {
     try {
-      const response = await axios.patch('http://192.168.1.2:8000/auth/admin-settings/update/', data);
+      const response = await axios.patch('http://192.168.1.10:8000/auth/admin-settings/update/', data);
       console.log('Response:', response.data);
     } catch (error) {
       console.error('Error updating data:', error);
@@ -797,7 +797,7 @@ const SiteDetailsForm: React.FC = () => {
   useEffect(() => {
     const fetchPageData = async () => {
       try {
-        const response = await axios.get('http://192.168.1.2:8000/auth/admin-settings/');
+        const response = await axios.get('http://103.214.132.20:8000/api/admin-settings/');
         const pageData = response.data;
 
         // Set the fetched data as default values

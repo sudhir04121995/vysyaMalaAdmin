@@ -95,7 +95,7 @@ const PageList: React.FC = () => {
     const fetchPages = async () => {
       try {
         const response = await axios.get<Page[]>(
-          'http://192.168.1.10:8000/auth/page-list/',
+          'http://103.214.132.20:8000/api/page-list/',
         );
         setPages(response.data);
         console.log('getRequestOfTableData:', response.data);
@@ -119,7 +119,7 @@ const PageList: React.FC = () => {
     if (isConfirmed) {
       try {
         const response = await axios.delete(
-          `http://192.168.1.10:8000/auth/page/delete/${id}/`,
+          `http://103.214.132.20:8000/api/page/delete/${id}/`,
         );
         console.log(`Deleted page with id: ${id}`, response.data);
         // Refresh the page list after deletion
@@ -153,10 +153,10 @@ const PageList: React.FC = () => {
               <TableCell sx={{ fontWeight: 'bold', fontSize: '18px',  paddingLeft: '60px' }}>
                 ID
               </TableCell>
-              <TableCell sx={{ fontWeight: 'bold', fontSize: '18px', paddingLeft: '150px', }}>
+              <TableCell sx={{ fontWeight: 'bold', fontSize: '18px'}}>
                 Page Name
               </TableCell>
-              <TableCell sx={{ fontWeight: 'bold', fontSize: '18px', paddingLeft: '150px' }}>
+              <TableCell sx={{ fontWeight: 'bold', fontSize: '18px'}}>
                 Status
               </TableCell>
               <TableCell
@@ -177,8 +177,8 @@ const PageList: React.FC = () => {
             {pages.map((page) => (
               <TableRow key={page.id}>
                 <TableCell sx={{  fontSize: '18px',  paddingLeft: '60px' }}>{page.id}</TableCell>
-                <TableCell  sx={{  fontSize: '18px',  paddingLeft: '150px' }}>{page.page_name}</TableCell>
-                <TableCell  sx={{  fontSize: '18px',  paddingLeft: '150px' }}>{page.status}</TableCell>
+                <TableCell  sx={{  fontSize: '18px',   }}>{page.page_name}</TableCell>
+                <TableCell  sx={{  fontSize: '18px'}}>{page.status}</TableCell>
                 <TableCell align="right">
                   {/* <IconButton onClick={() => handleEdit(page.id)} color="primary">
                     <EditIcon />
@@ -201,6 +201,7 @@ const PageList: React.FC = () => {
                       variant="outlined"
                       color="secondary"
                       startIcon={<DeleteIcon />}
+                      
                     >
                       Delete
                     </Button>

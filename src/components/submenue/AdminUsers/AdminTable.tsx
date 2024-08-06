@@ -37,7 +37,7 @@ const PageList: React.FC = () => {
     
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://192.168.1.10:8000/auth/admin-users-list/');
+        const response = await axios.get('http://103.214.132.20:8000/api/admin-users-list/');
         const data = response.data.map((item: any) => ({
           id: item.id, 
           username: item.username,
@@ -69,7 +69,7 @@ const PageList: React.FC = () => {
     );
     if (isConfirmed) {
     try {
-      await axios.delete(`http://192.168.1.10:8000/auth/admin-users/${id}/delete/`);
+      await axios.delete(`http://103.214.132.20:8000/api/admin-users/${id}/delete/`);
       setUsers(users.filter((user) => user.id !== id));
       console.log(`Deleted user with id: ${id}`);
     } catch (error) {

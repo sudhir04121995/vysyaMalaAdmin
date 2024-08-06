@@ -375,6 +375,8 @@ import SiteDetailsForm from './components/submenue/Sidebar/AdminSettings/AdminSe
 import AdminUserForm from './components/submenue/AdminUsers/AdminUsers';
 import AdminTable from './components/submenue/AdminUsers/AdminTable';
 import EditAdminUserForm from './components/submenue/AdminUsers/EditAdminUsers';
+import DummyEEditorComponent from './components/submenue/Sidebar/CsmPage/Dummy';
+import JoditEditorComponent from './components/submenue/Sidebar/CsmPage/jodit';
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -658,6 +660,8 @@ function App() {
     </>
   }
 />
+
+
 
             </Routes>
           </DefaultLayout>
